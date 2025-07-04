@@ -6,35 +6,38 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const authRoutes = require("./routes/authRoutes");
-const taskRoutes = require("./routes/taskRoutes"); // Import task routes
+const taskRoutes = require("./routes/taskRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
-app.use(express.json());
+// === MIDDLEWARE ===
 app.use(cors());
+app.use(express.json()); // Parses incoming JSON requests
 
-// MongoDB Connection
+// === DATABASE CONNECTION ===
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("MongoDB connected successfully"))
-  .catch((err) => console.error("MongoDB connection error:", err));
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch((err) => console.error("❌ MongoDB connection failed:", err));
 
-// Basic Route for testing
+// === ROUTES ===
 app.get("/", (req, res) => {
-  res.send("Task Manager API is running!");
+  res.send("🚀 Task Manager API is running!");
 });
 
-// Use Auth Routes
 app.use("/api/auth", authRoutes);
-// Use Task Routes
-app.use("/api/tasks", taskRoutes); // All routes defined in taskRoutes.js will be prefixed with /api/tasks
+app.use("/api/tasks", taskRoutes);
 
-// Start the server
+// === 404 HANDLER FOR INVALID ROUTES ===
+app.use((req, res) => {
+  res.status(404).json({ error: "Route not found" });
+});
+
+// === START SERVER ===
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`🔊 Server running on http://localhost:${PORT}`);
 });
