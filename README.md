@@ -1,6 +1,6 @@
 <!-- Typing SVG -->
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=4FADF7&center=true&vCenter=true&width=435&lines=Welcome+to+TaskScheduler;MERN+Stack+Project+by+Nikhil+Nambiar;Manage+Tasks+Smartly+%7C+Securely+%7C+Swiftly" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=4FADF7&center=true&vCenter=true&width=435&lines=Welcome+to+TaskScheduler;MERN+Stack+Project;Manage+Tasks+Smartly+%7C+Securely+%7C+Swiftly" alt="Typing SVG" />
 </p>
 
 <h1 align="center">📋 TaskScheduler - A MERN Stack Task Manager</h1>
